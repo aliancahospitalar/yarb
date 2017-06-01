@@ -1,0 +1,5 @@
+export const INITIALIZE_APP = 'EXAMPLE/APP/INITIALIZE';
+
+export const DECREMENT = 'EXAMPLE/DECREMENT';
+export const INCREMENT = 'EXAMPLE/INCREMENT';
+export const ADD = 'EXAMPLE/ADD';
