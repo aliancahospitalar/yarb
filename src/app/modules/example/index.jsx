@@ -19,7 +19,7 @@ class Example extends Component {
         return <div>
             <Button onClick={doIncrement}>+</Button>
             <Button onClick={doDecrement}>-</Button>
-            <p>{counter}</p>
+            <p>{counter} clicks</p>
         </div>;
     }
 }
