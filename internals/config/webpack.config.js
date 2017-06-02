@@ -13,8 +13,9 @@ module.exports = {
             exclude: /node_modules/,
             loader: 'babel-loader',
             query: {
-                presets: ['es2015', 'react'],
-                babelrc: './internals/config/.babelrc',
+                presets: ['es2015', 'react', 'stage-0'],
+                //babelrc: './internals/config/.babelrc',
+                babelrc: false,
             }
         }]
     },
