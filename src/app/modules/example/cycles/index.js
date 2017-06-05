@@ -14,7 +14,7 @@ import {
     ADD,
 } from '../constants.js'
 
-function main(sources) {
+export default function increment(sources) {
     const inc$ = sources.ACTION
         .filter(action => action.type === INCREMENT)
         .mapTo({
@@ -23,7 +23,7 @@ function main(sources) {
         });
 
     const dec$ = sources.ACTION
-        .filter(action => action.type === INCREMENT)
+        .filter(action => action.type === DECREMENT)
         .mapTo({
             type: ADD,
             payload: -1,

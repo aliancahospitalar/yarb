@@ -24,8 +24,8 @@ class Example extends Component {
     }
 }
 
-const mapStateToProps = (state, props) => ({
-    counter: state.counter
+const mapStateToProps = ({ exampleReducer }, props) => ({
+    counter: exampleReducer.counter
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
