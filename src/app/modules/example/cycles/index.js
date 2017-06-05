@@ -2,7 +2,7 @@ import {
     run
 } from '@cycle/run';
 
-import xs from 'xxtream';
+import xs from 'xstream';
 
 import {
     makeActionDriver
