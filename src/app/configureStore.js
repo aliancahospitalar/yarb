@@ -7,6 +7,7 @@ import {
     combineReducers,
     createStore,
     applyMiddleware,
+    compose
 } from 'redux';
 
 import {
@@ -21,5 +22,5 @@ const reducers = reduce(map(req.keys(), (key) => {
     }
 }), (carry, { name, reducer }) => ({ ...carry, [name]: reducer }), {});
 
-export default createStore(combineReducers(reducers), applyMiddleware(cyclesMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+export default createStore(combineReducers(reducers), compose(applyMiddleware(cyclesMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
 
