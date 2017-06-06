@@ -1,13 +1,20 @@
 var path = require('path');
 
 module.exports = {
-    entry: './src/app/index.jsx',
+    entry: {
+        example: './src/app/modules/example',
+        usersearch: './src/app/modules/usersearch',
+        index: './src/app/index.jsx',
+    },
     output: {
         path: path.join(__dirname, '../../dist'),
-        filename: 'bundle.js',
+        filename: '[name].entry.js',
         publicPath: '/static/'
     },
     watch:true,
+    devServer: {
+    historyApiFallback: true
+  },
     module: {
         loaders: [{
             test: /\.jsx?$/,
@@ -18,6 +25,11 @@ module.exports = {
                 //babelrc: './internals/config/.babelrc',
                 babelrc: false,
             }
+        },
+        {
+            test: /\.scss$/,
+            loaders: ['style-loader', 'css-loader', 'sass-loader']
+            
         }]
     },
     resolve: {

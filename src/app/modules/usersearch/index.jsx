@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {searchUsers} from './actions';
 import Button from '../../../components/button';
 
-class UserSearch extends React.Component {
+class UserSearch extends Component {
   render() {
       const {
             searchUsers,
