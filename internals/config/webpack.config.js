@@ -7,6 +7,7 @@ module.exports = {
         filename: 'bundle.js',
         publicPath: '/static/'
     },
+    watch:true,
     module: {
         loaders: [{
             test: /\.jsx?$/,
