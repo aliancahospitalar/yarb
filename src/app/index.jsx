@@ -4,10 +4,11 @@ import { render } from 'react-dom';
 
 import store from './configureStore';
 import Example from './modules/example';
+import UserSearch from './modules/usersearch';
 
 render(
     <Provider store={store}>
-        <Example />
+        <UserSearch />
     </Provider>,
     document.getElementById('app')
 )

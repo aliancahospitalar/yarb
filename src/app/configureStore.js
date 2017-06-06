@@ -22,6 +22,8 @@ import {
     cyclesMiddleware
 } from './middlewares/cycles';
 
+import { makeHTTPDriver } from '@cycle/http';
+
 const {
     makeActionDriver
 } = cyclesMiddleware;
@@ -36,12 +38,12 @@ const reducers = reduce(map(requireReducers.keys(), (key) => {
 }), (carry, { name, reducer }) => ({...carry, [name]: reducer }), {});
 
 const store = createStore(combineReducers(reducers), compose(applyMiddleware(cyclesMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
-
 const requireCycles = require.context('./modules/', true, /.+?\/cycles\/index\.jsx?/);
 const cycles = map(requireCycles.keys(), (key) => requireCycles(key).default);
 
 run(combineCycles(...cycles), {
     ACTION: makeActionDriver(),
+    HTTP: makeHTTPDriver()
 });
 
 export default store;
