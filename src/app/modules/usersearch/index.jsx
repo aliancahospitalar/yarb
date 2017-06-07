@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {searchUsers} from './actions';
 import Button from '../../../components/button';
+import StyledLink from '../../../components/styledLink';
+import Wrapper from '../../../components/wrapper';
+import InlineWrapper from '../../../components/inlineWrapper';
 
 class UserSearch extends Component {
   render() {
@@ -13,10 +16,13 @@ class UserSearch extends Component {
         } = this.props;
     return (
       <div>
-        <Button onClick = {searchUsers}>Get Random User</Button>
+        <Wrapper>
+        <InlineWrapper><Button onClick = {searchUsers}>Get Random User</Button></InlineWrapper>
         <h1>Name: {name}</h1>
         <h2>Email: {email} </h2>
         <h3>Phone: {phone} </h3> 
+        </Wrapper>
+        <StyledLink to={'/'}>Home</StyledLink>
       </div>
     );
   }

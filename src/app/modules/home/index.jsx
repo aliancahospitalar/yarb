@@ -1,15 +1,27 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router';
+import StyledLink from '../../../components/styledLink';
+import Wrapper from '../../../components/wrapper';
+import InlineWrapper from '../../../components/inlineWrapper';
+import HomeHeader from '../../../components/homeHeader';
+import { ThemeProvider } from 'styled-components';
+
+const theme = {
+    main: 'mediumseagreen'
+};
 
 class Home extends Component {
   render() {
     return (
-      <div>
-        <h1>Welcome to the Home Page</h1>
-        <Link to={`/example`}>Fun with Counters</Link>
-        <br></br>
-        <Link to={'/usersearch'}>Find Random People!</Link> 
-      </div>
+        <ThemeProvider theme={theme}><div>
+        <Wrapper>
+        <HomeHeader>Welcome to the Home Page</HomeHeader>
+        </Wrapper>
+        <InlineWrapper>
+        <StyledLink to={`/example`}>Fun with Counters</StyledLink>
+        <StyledLink to={'/usersearch'}>Find Random People!</StyledLink
+        >
+        </InlineWrapper></div>
+        </ThemeProvider>
     );
   }
 }

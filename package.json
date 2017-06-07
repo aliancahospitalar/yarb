@@ -7,7 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf dist && webpack --config ./internals/config/webpack.config.js",
     "serve": "node_modules/.bin/webpack-dev-server --config ./internals/config/webpack.config.js --content-base dist/"
-
   },
   "repository": {
     "type": "git",
@@ -60,6 +59,7 @@
     "react-router-redux": "^4.0.8",
     "redux": "^3.6.0",
     "redux-cycles": "^0.4.0",
+    "styled-components": "^2.0.0",
     "whatwg-fetch": "^2.0.3",
     "xstream": "^10.8.0"
   }
