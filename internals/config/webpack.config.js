@@ -1,4 +1,6 @@
 var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
     entry: {
@@ -11,10 +13,10 @@ module.exports = {
         filename: '[name].entry.js',
         publicPath: '/static/'
     },
-    watch:true,
+    watch: true,
     devServer: {
-    historyApiFallback: true
-  },
+        historyApiFallback: true
+    },
     module: {
         loaders: [{
             test: /\.jsx?$/,
@@ -25,14 +27,21 @@ module.exports = {
                 //babelrc: './internals/config/.babelrc',
                 babelrc: false,
             }
-        },
-        {
+        }, {
             test: /\.scss$/,
             loaders: ['style-loader', 'css-loader', 'sass-loader']
-            
+
+        }, {
+            test: /\.html$/,
+            loader: 'html-loader'
         }]
     },
     resolve: {
         extensions: ['.js', '.jsx'],
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/app/index.html'
+        })
+    ]
 };
