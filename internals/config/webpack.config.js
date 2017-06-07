@@ -10,7 +10,7 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, '../../dist'),
-        filename: '[name].entry.js',
+        filename: '[name].[hash].entry.js',
         publicPath: '/static/'
     },
     watch: true,
