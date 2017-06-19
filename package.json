@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf dist && webpack --config ./internals/config/webpack.config.js",
-    "start": "node_modules/.bin/webpack-dev-server --config ./internals/config/webpack.config.js --content-base dist/"
+    "start": "node_modules/.bin/webpack-dev-server --config ./internals/config/webpack.config.js --content-base dist/",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "repository": {
     "type": "git",
