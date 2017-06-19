@@ -1,5 +1,5 @@
 const { map } = require('lodash');
-const { configure } = require('@kadira/storybook');
+const { configure } = require('@storybook/react');
 
 const req = require.context('../src/components/', true, /.+?\/stories\/.+?\.story\.jsx?/);
 

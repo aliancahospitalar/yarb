@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/aliancahospitalar/yarb#readme",
   "devDependencies": {
-    "@kadira/storybook": "^2.35.3",
+    "@storybook/react": "^3.1.3",
     "babel": "^6.23.0",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
