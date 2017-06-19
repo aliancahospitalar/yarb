@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import {
+    increment,
+    decrement,
+} from './actions';
+
+import {
+    selectCounter
+} from './selectors';
+
 import Button from '../../../components/button';
 import StyledLink from '../../../components/styledLink';
 import Wrapper from '../../../components/wrapper';
 import InlineWrapper from '../../../components/inlineWrapper';
 import CounterHeader from '../../../components/counterHeader';
-
-import {
-    increment,
-    decrement,
-} from './actions'
 
 class Example extends Component {
     render() {
@@ -34,8 +38,8 @@ class Example extends Component {
     }
 }
 
-const mapStateToProps = ({ exampleReducer }, props) => ({
-    counter: exampleReducer.counter
+const mapStateToProps = (state, props) => ({
+    counter: selectCounter(state),
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
