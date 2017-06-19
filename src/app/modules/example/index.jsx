@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Button from '../../../components/button';
+import StyledLink from '../../../components/styledLink';
+import Wrapper from '../../../components/wrapper';
+import InlineWrapper from '../../../components/inlineWrapper';
+import CounterHeader from '../../../components/counterHeader';
 
 import {
     increment,
@@ -17,9 +21,15 @@ class Example extends Component {
         } = this.props;
 
         return <div>
-            <Button onClick={doIncrement}>+</Button>
-            <Button onClick={doDecrement}>-</Button>
-            <p>{counter} clicks</p>
+            <Wrapper>
+            <CounterHeader>{counter} clicks</CounterHeader>
+            <InlineWrapper>
+                <Button onClick={doIncrement}>+</Button>
+                <Button onClick={doDecrement}>-</Button>
+            </InlineWrapper>
+            </Wrapper>
+            <StyledLink to={'/'}>Home</StyledLink> 
+
         </div>;
     }
 }

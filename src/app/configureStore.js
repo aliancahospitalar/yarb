@@ -22,6 +22,11 @@ import {
     cyclesMiddleware
 } from './middlewares/cycles';
 
+import { makeHTTPDriver } from '@cycle/http';
+
+import { browserHistory} from 'react-router';
+import { routerReducer, routerMiddleware, syncHistoryWithStore } from 'react-router-redux';
+
 const {
     makeActionDriver
 } = cyclesMiddleware;
@@ -33,15 +38,23 @@ const reducers = reduce(map(requireReducers.keys(), (key) => {
         name: key.match(/(?!\.?\/).+?(?=\/reducers)/)[0] + 'Reducer',
         reducer: requireReducers(key).default,
     }
-}), (carry, { name, reducer }) => ({...carry, [name]: reducer }), {});
+}), (carry, { name, reducer }) => ({...carry, [name]: reducer }), {routing: routerReducer});
 
-const store = createStore(combineReducers(reducers), compose(applyMiddleware(cyclesMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
-
+export const store = createStore(combineReducers(reducers), compose(applyMiddleware(cyclesMiddleware, routerMiddleware(browserHistory)), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
 const requireCycles = require.context('./modules/', true, /.+?\/cycles\/index\.jsx?/);
 const cycles = map(requireCycles.keys(), (key) => requireCycles(key).default);
 
 run(combineCycles(...cycles), {
     ACTION: makeActionDriver(),
+    HTTP: makeHTTPDriver()
 });
 
-export default store;
+export const history = syncHistoryWithStore(
+  browserHistory,
+  store
+);
+
+
+
+
+

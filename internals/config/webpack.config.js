@@ -1,11 +1,21 @@
 var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
-    entry: './src/app/index.jsx',
+    entry: {
+        example: './src/app/modules/example',
+        usersearch: './src/app/modules/usersearch',
+        index: './src/app/index.jsx',
+    },
     output: {
         path: path.join(__dirname, '../../dist'),
-        filename: 'bundle.js',
-        publicPath: '/static/'
+        filename: '[name].[chunkhash].entry.js',
+        //publicPath: '/static/'
+    },
+    watch: true,
+    devServer: {
+        historyApiFallback: true
     },
     module: {
         loaders: [{
@@ -17,9 +27,21 @@ module.exports = {
                 //babelrc: './internals/config/.babelrc',
                 babelrc: false,
             }
+        }, {
+            test: /\.scss$/,
+            loaders: ['style-loader', 'css-loader', 'sass-loader']
+
+        }, {
+            test: /\.html$/,
+            loader: 'html-loader'
         }]
     },
     resolve: {
         extensions: ['.js', '.jsx'],
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/app/index.html'
+        })
+    ]
 };
