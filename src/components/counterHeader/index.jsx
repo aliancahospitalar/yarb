@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import styled from 'styled-components';
+
 const CounterHeader = styled.h1`
 	color: #111; 
 	font-family: 'Open Sans Condensed', sans-serif; 
